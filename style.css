@@ -1,0 +1,567 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 50%;
+  overflow: hidden;
+  height: 100%;
+}
+@media screen and (orientation: landscape) and (max-width: 700px) {
+  html {
+    font-size: 4px;
+  }
+}
+@media (max-width: 450px) {
+  html {
+    font-size: 7px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #eff7dd;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container * {
+  position: absolute;
+}
+.container *:after {
+  position: absolute;
+}
+.container *:before {
+  position: absolute;
+}
+.container .drawing-tools {
+  width: 13rem;
+  height: 13rem;
+  z-index: 10;
+  top: 5rem;
+  left: 1rem;
+  filter: drop-shadow(-5px 5px 5px rgba(0, 0, 0, 0.1));
+  transition: all 0.1s;
+}
+.container .drawing-tools .palette-box {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.container .drawing-tools .palette-box:before {
+  content: "";
+}
+.container .drawing-tools .palette-box__top {
+  width: 96%;
+  height: 50%;
+  border-radius: 10rem 10rem 0 0;
+  background: linear-gradient(to bottom, #ffffff 82%, rgba(255, 255, 255, 0) 0);
+  right: 0;
+}
+.container .drawing-tools .palette-box__top:before {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  background: #ffffff;
+  top: 5rem;
+  left: 4.5rem;
+  z-index: 12;
+}
+.container .drawing-tools .palette-box__center {
+  width: 8rem;
+  height: 10rem;
+  border-radius: 100%;
+  background: #ffffff;
+  right: 0;
+  bottom: 0.5rem;
+  transform: rotate(22deg);
+  z-index: 10;
+}
+.container .drawing-tools .palette-box__center:before {
+  content: "";
+  width: 3rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  bottom: 0.25rem;
+  left: -1.5rem;
+  background: radial-gradient(at 100% 10%, transparent 1.5rem, transparent 49%, #ffffff 50%);
+  transform: rotate(180deg) skew(52deg, -28deg);
+  z-index: 1;
+}
+.container .drawing-tools .palette-box__center:after {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  background: #ffffff;
+  left: 0rem;
+  top: 6.5rem;
+}
+.container .drawing-tools .palette-box__bottom {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 100%;
+  border: 0.5rem solid #ffffff;
+  bottom: 4.9rem;
+  right: 7.5rem;
+}
+.container .drawing-tools .palette-box__bottom:before {
+  content: "";
+  width: 2.25rem;
+  height: 4.5rem;
+  background: #ffffff;
+  border-radius: 100% 100% 0 100%;
+  right: 2.25rem;
+  bottom: -1rem;
+  transform: rotate(-4deg);
+}
+.container .drawing-tools .palette-box__bottom:after {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #ffffff;
+  left: -0.25rem;
+  top: -0.25rem;
+  z-index: 10;
+}
+.container .drawing-tools .palette-box .colors {
+  z-index: 12;
+}
+.container .drawing-tools .palette-box__blue {
+  width: 1.5rem;
+  height: 2rem;
+  background: #2ad4f7;
+  border-radius: 84% 52% 40% 100% / 51% 62% 64% 48%;
+  top: 8rem;
+  right: 2rem;
+  transform: rotate(30deg);
+}
+.container .drawing-tools .palette-box__yellow {
+  width: 1.5rem;
+  height: 2rem;
+  background: #f8e12e;
+  border-radius: 84% 52% 45% 100% / 59% 62% 64% 57%;
+  top: 5rem;
+  right: 1.5rem;
+}
+.container .drawing-tools .palette-box__red {
+  width: 1.5rem;
+  height: 2rem;
+  background: #ff3838;
+  border-radius: 84% 52% 40% 100% / 51% 62% 64% 48%;
+  top: 2rem;
+  right: 2.5rem;
+  transform: rotate(-35deg);
+}
+.container .drawing-tools .palette-box__red:before {
+  content: "";
+  width: 1.15rem;
+  height: 1.5rem;
+  background: #ff3838;
+  border-radius: 100%;
+  bottom: 0;
+  left: -0.1rem;
+}
+.container .drawing-tools .palette-box__green {
+  width: 1.25rem;
+  height: 2rem;
+  background: #6dd500;
+  border-radius: 40% 100% 100% 100% / 96% 30% 92% 33%;
+  top: 0.5rem;
+  right: 5.5rem;
+  transform: rotate(-70deg);
+}
+.container .drawing-tools .palette-box__green:before {
+  content: "";
+  width: 1rem;
+  height: 1.5rem;
+  background: #6dd500;
+  border-radius: 55% 0 0 30%;
+  bottom: 0;
+  left: -0.35rem;
+}
+.container .drawing-tools .palette-box__green:after {
+  content: "";
+  width: 0.5rem;
+  height: 1rem;
+  background: #6dd500;
+  border-radius: 100%;
+  bottom: -0.15rem;
+  right: 0.1rem;
+  transform: rotate(14deg);
+}
+.container .drawing-tools .brush {
+  width: 1.1rem;
+  height: 100%;
+  top: 1rem;
+  right: 0.15rem;
+  transform: rotate(25deg);
+}
+.container .drawing-tools .brush__top {
+  width: 100%;
+  height: 1.85rem;
+  background: linear-gradient(to top, #fbe556 0%, #fef489 100%);
+}
+.container .drawing-tools .brush__center {
+  width: 100%;
+  height: 2.15rem;
+  background: linear-gradient(to right, #dadad9 0%, #ffffff 100%);
+  top: 1.95rem;
+}
+.container .drawing-tools .brush__bottom {
+  width: 0.7em;
+  height: 7.5rem;
+  background: linear-gradient(to right, #6b6c6a 0%, #dadad9 80%);
+  border-radius: 0 0 1rem 1rem;
+  transform: perspective(0.2rem) rotateX(-1deg);
+  top: 6rem;
+  right: 0.2rem;
+}
+.container .paiting-canvas {
+  width: 37rem;
+  height: 58rem;
+  bottom: 0;
+}
+@media (max-width: 450px) {
+  .container .paiting-canvas {
+    bottom: auto;
+  }
+}
+.container .paiting-canvas .easel {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .paiting-canvas .easel-top {
+  height: 8rem;
+  top: 0;
+}
+.container .paiting-canvas .easel-top__leg {
+  width: 2.1rem;
+  height: 100%;
+  background: #a06626;
+}
+.container .paiting-canvas .easel-top__leg:before {
+  content: "";
+  width: 3.15rem;
+  height: 58%;
+  background: #a16a24;
+  box-shadow: 0.3rem 0 0 #814c0d;
+  left: -5.75rem;
+  bottom: 0;
+  transform: skewX(25deg);
+}
+.container .paiting-canvas .easel-top__leg:after {
+  content: "";
+  width: 3.15rem;
+  height: 58%;
+  background: #a16a24;
+  box-shadow: -0.3rem 0 0 #814c0d;
+  right: -5.75rem;
+  bottom: 0;
+  transform: skewX(-25deg);
+}
+.container .paiting-canvas .easel-top__stand {
+  width: 11rem;
+  height: 2.5rem;
+  background: #c18725;
+  bottom: -1.65rem;
+  z-index: 1;
+}
+.container .paiting-canvas .easel-top__stand:before {
+  content: "";
+  width: 100%;
+  height: 0;
+  border-bottom: 0.3rem solid #de983a;
+  border-left: 0.3rem solid transparent;
+  border-right: 0.3rem solid transparent;
+  top: -0.3rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.container .paiting-canvas .canvas {
+  width: 100%;
+  height: calc(100% - 21rem);
+  top: 8rem;
+  border: 0.3rem solid #876f49;
+  background: #cfb97d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .paiting-canvas .canvas .canvas-frame {
+  width: calc(100% - 3rem);
+  height: calc(100% - 3rem);
+  background: #8cd2b9;
+  border: 0.7rem solid #402412;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .paiting-canvas .canvas .canvas-frame:before {
+  content: "";
+  width: 50%;
+  height: 40%;
+  background: #7ab286;
+  border-top: 0.5rem solid #22313d;
+  left: 0;
+  bottom: 0;
+}
+.container .paiting-canvas .canvas .canvas-frame:after {
+  content: "";
+  width: 50%;
+  height: 60%;
+  background: #7ab286;
+  border-top: 0.5rem solid #22313d;
+  right: 0;
+  bottom: 0;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa {
+  width: 28rem;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head {
+  width: 19rem;
+  height: 29rem;
+  bottom: 0;
+  background: #22313d;
+  border-radius: 10rem 10rem 0 0;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face {
+  width: 10rem;
+  height: 25rem;
+  bottom: 0;
+  left: 4.5rem;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face .face {
+  width: 13.5rem;
+  height: 19.5rem;
+  background: #fde1bb;
+  border-radius: 10rem;
+  box-shadow: inset -2rem -1.8rem 0 #fdd7a9;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face .face:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 1rem solid #fde1bb;
+  left: 50%;
+  top: 0.15rem;
+  transform: translate(-50%, -100%);
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face .face:after {
+  content: "";
+  width: 50%;
+  height: 100%;
+  border-radius: 0 10rem 10rem 0;
+  box-shadow: 1rem 0.2rem 2rem rgba(0, 0, 0, 0.1);
+  right: 0;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face .face__shadow {
+  width: 50%;
+  height: 25rem;
+  background: #fdd7a9;
+  border-radius: 0 10rem 0 0;
+  top: 0;
+  right: 0;
+  opacity: 0.55;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face .face .face-mimic {
+  width: 42%;
+  height: 24%;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face .face .face-mimic .face-mimic-eyes {
+  width: 100%;
+  height: 100%;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face .face .face-mimic .face-mimic-eyes > div {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 100%;
+  background: #22313d;
+  bottom: 0.8rem;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face .face .face-mimic .face-mimic-eyes__left {
+  left: 0;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face .face .face-mimic .face-mimic-eyes__right {
+  right: 0;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face .face .face-mimic .face-mimic-lip {
+  width: 2.15rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face .face .face-mimic .face-mimic-lip .face-mimic-edge {
+  width: 2.15rem;
+  height: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  overflow: hidden;
+  bottom: 0;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face .face .face-mimic .face-mimic-lip .face-mimic-edge__circle {
+  width: 8rem;
+  height: 5rem;
+  bottom: 0;
+  border: 0.35rem solid #22313d;
+  border-radius: 0 0 100% 100%;
+  border-top: 0;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face .neck {
+  width: 9rem;
+  height: 12rem;
+  background: #fde1bb;
+  bottom: 0;
+  right: 0;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face .neck:before {
+  content: "";
+  width: 16rem;
+  height: 10rem;
+  border-radius: 100%;
+  background: #fde1bb;
+  top: 8.3rem;
+  left: -7.8rem;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-head .monalisa-face .neck:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 0.1rem solid transparent;
+  border-right: 2rem solid transparent;
+  border-bottom: 1.5rem solid #22313d;
+  bottom: 0;
+  left: -8rem;
+}
+.container .paiting-canvas .canvas .canvas-frame .monalisa .monalisa-shoulder {
+  width: 100%;
+  height: 16rem;
+  border-radius: 100%;
+  background: #22313d;
+  top: 26.5rem;
+  z-index: -1;
+  bottom: 0;
+}
+.container .paiting-canvas .easel-bottom {
+  height: 13rem;
+  bottom: 0;
+}
+.container .paiting-canvas .easel-bottom .easel-bottom-leg {
+  width: 3.15rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .paiting-canvas .easel-bottom .easel-bottom-leg__back {
+  width: 2.1rem;
+  height: 100%;
+  background: #804e1b;
+}
+.container .paiting-canvas .easel-bottom .easel-bottom-leg__back:before {
+  content: "";
+  width: 100%;
+  height: 2.25rem;
+  background: #724618;
+  top: 2rem;
+}
+.container .paiting-canvas .easel-bottom .easel-bottom-leg__left {
+  width: 3.15rem;
+  height: 100%;
+  background: #a16a24;
+  box-shadow: 0.3rem 0 0 #814c0d;
+  left: -6.75rem;
+  bottom: 0;
+  transform: skewX(-25deg);
+}
+.container .paiting-canvas .easel-bottom .easel-bottom-leg__left:before {
+  content: "";
+  width: 100%;
+  height: 1.15rem;
+  background: #905f20;
+  top: 2rem;
+}
+.container .paiting-canvas .easel-bottom .easel-bottom-leg__right {
+  width: 3.15rem;
+  height: 100%;
+  background: #a16a24;
+  box-shadow: -0.3rem 0 0 #814c0d;
+  right: -6.75rem;
+  bottom: 0;
+  transform: skewX(25deg);
+}
+.container .paiting-canvas .easel-bottom .easel-bottom-leg__right:before {
+  content: "";
+  width: 100%;
+  height: 1.15rem;
+  background: #905f20;
+  top: 2rem;
+}
+.container .paiting-canvas .easel-bottom .easel-bottom-leg__center {
+  width: 15rem;
+  height: 3.15rem;
+  background: #a16a24;
+  bottom: 2.5rem;
+}
+.container .paiting-canvas .easel-bottom .easel-bottom-leg__center:before {
+  content: "";
+  width: 11rem;
+  height: 0;
+  border-bottom: 0.35rem solid #de983a;
+  border-left: 0.4rem solid transparent;
+  border-right: 0.4rem solid transparent;
+  top: -0.35rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.container .paiting-canvas .easel-bottom__stand {
+  width: 25rem;
+  height: 3rem;
+  background: #c18725;
+  top: -1rem;
+  z-index: 1;
+}
+.container .paiting-canvas .easel-bottom__stand:before {
+  content: "";
+  width: 100%;
+  height: 0;
+  border-bottom: 0.65rem solid #d49a48;
+  border-left: 0.65rem solid transparent;
+  border-right: 0.65rem solid transparent;
+  top: -0.65rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
